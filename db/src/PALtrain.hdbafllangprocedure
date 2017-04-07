@@ -1,0 +1,18 @@
+{ 
+  "area" : "AFLPAL", 
+  "function" : "AUTOARIMA", 
+  "parameters" : [ 
+    { 
+      "type" : "xsaPredictivePAL.db::PAL.TTData", 
+      "direction" : "IN" 
+    }, 
+    { 
+      "type" : "xsaPredictivePAL.db::PAL.TTParams", 
+      "direction" : "IN" 
+    }, 
+    { 
+      "type" : "xsaPredictivePAL.db::PAL.TTModel", 
+      "direction" : "OUT" 
+    } 
+  ]
+}

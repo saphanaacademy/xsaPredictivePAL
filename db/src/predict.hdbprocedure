@@ -1,0 +1,16 @@
+PROCEDURE "xsaPredictivePAL.db::predict" (IN ForecastLength INTEGER)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   	upsert "xsaPredictivePAL.db::PAL.ParamsForecast" values ('ForecastLength', :ForecastLength, null, null) where "name" = 'ForecastLength';
+	delete from "xsaPredictivePAL.db::PAL.Forecast";
+	p1 = select * from "xsaPredictivePAL.db::PAL.Model";
+	p2 = select * from "xsaPredictivePAL.db::PAL.ParamsForecast";
+	call "xsaPredictivePAL.db::PALpredict" (:p1, :p2, :p3);                              
+	insert into "xsaPredictivePAL.db::PAL.Forecast" select * from :p3;
+END

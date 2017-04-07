@@ -1,0 +1,10 @@
+service namespace "xsaPredictivePAL.db" {
+    "xsaPredictivePAL.db::tables.StockPrices" as "StockPrices" 
+        create forbidden 
+        update forbidden 
+        delete forbidden;
+    "xsaPredictivePAL.db::PAL.Forecast" as "Forecast" 
+        create forbidden 
+        update forbidden 
+        delete forbidden;
+}
